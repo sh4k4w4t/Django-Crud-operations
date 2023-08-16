@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block body %}
+
+<h3>List of author:</h3>
+<ul>
+    {% if author_list %}
+    {% for i in author_list %}
+    <li><a href="{% url 'Blog:books' author_id=i.id %}">{{ i.first_name }} {{ i.last_name }}</a></li>
+    {% endfor %}
+
+    {% else %}
+    <h4>No Musician in here.</h4>
+    {% endif %}
+</ul>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block body %}
+<h3>Author information:</h3>
+<h4>{{author.first_name}} {{author.last_name}}</h4><br><br>
+
+{% if books %}
+<h5>List of books:</h5>
+<table>
+    <tr>
+        <th>name</th>
+        <th>price</th>
+        <th>topic</th>
+        <th>release date</th>
+    </tr>
+    {% for i in books %}
+    <tr>
+        <td>{{i.name}}</td>
+        <td>{{i.price}}</td>
+        <td>{{i.topic}}</td>
+        <td>{{i.release_date}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<h3>No Book by this author</h3>
+{% endif %}
+
+{% endblock %}
