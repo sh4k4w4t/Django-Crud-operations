@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 {% block body %}
 <h3>Author information:</h3>
-<h4>{{author.first_name}} {{author.last_name}}</h4><br><br>
+<h4>{{author.first_name}} {{author.last_name}}</h4>
+<a href="{% url 'Blog:update_author' author_id=author.id %}">Edit</a>
+<a href="{% url 'Blog:delete_author' author_id=author.id %}">Delete</a>
+<br>
 
 {% if books %}
 <h5>List of books:</h5>
@@ -11,6 +14,8 @@
         <th>price</th>
         <th>topic</th>
         <th>release date</th>
+        <th>Edit Book</th>
+        <th>Delete Book</th>
     </tr>
     {% for i in books %}
     <tr>
@@ -18,6 +23,8 @@
         <td>{{i.price}}</td>
         <td>{{i.topic}}</td>
         <td>{{i.release_date}}</td>
+        <td><a href="{% url 'Blog:update_book' author_id=author.id book_id=i.id %}">Edit</a></td>
+        <td><a href="{% url 'Blog:delete_book' author_id=author.id book_id=i.id %}">Delete</a></td>
     </tr>
     {% endfor %}
 </table>
